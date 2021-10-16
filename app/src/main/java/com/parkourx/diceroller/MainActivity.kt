@@ -1,8 +1,9 @@
 package com.parkourx.diceroller
 import android.os.Bundle
 import android.widget.Button
+import android.widget.ImageView
 import android.widget.TextView
-import android.widget.Toast
+//import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 
 class MainActivity : AppCompatActivity() {
@@ -18,10 +19,20 @@ class MainActivity : AppCompatActivity() {
         val diceRoll = dice.roll()
         val myText: TextView = findViewById(R.id.textView)
         myText.text = diceRoll.toString()
-    }
-    private fun myToast() {
-        val toast = Toast.makeText(this, "Dice Rolled!", Toast.LENGTH_SHORT)
-        toast.show()
+        val diceImage: ImageView = findViewById(R.id.imageView)
+        //diceImage.setImageResource(R.drawable.dice_2)
+        val upImage = when(diceRoll) {
+            1 -> R.drawable.dice_1
+            2 -> R.drawable.dice_2
+            3 -> R.drawable.dice_3
+            4 -> R.drawable.dice_4
+            5 -> R.drawable.dice_5
+            else -> R.drawable.dice_6
+        }
+        diceImage.setImageResource(upImage)
+        diceImage.contentDescription = diceRoll.toString()
+
+
     }
 }
 
